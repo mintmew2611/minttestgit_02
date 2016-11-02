@@ -7,7 +7,7 @@ angular.module('starter', ['ionic'])
 
 .run(function($ionicPlatform,$rootScope) {
   $ionicPlatform.ready(function() {
-
+//fefe
     var pathphone = "/mnt/sdcard/";
     var fileTransfer = new FileTransfer();
 		fileTransfer.download(
