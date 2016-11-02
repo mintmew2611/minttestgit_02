@@ -1,0 +1,25 @@
+<ion-view title="OWNER" class="Detail_Assets_OWNER">
+
+        <div class="list list_owner" >
+                <div class="item rowadd_owner" ng-disabled="premiss_write_ass4" ng-click="next_add_owner()" >
+                        <div class = "row">
+                                <div class = "col col-80"></div>
+                                <div class = "col btnadd fontsize_default" style="text-align: right;"><i class = "ion-addowner"></i> ADD</div>
+                        </div>
+
+                </div>
+                <div class="item item-icon-right row_listowner" ng-click="changePage_ownerDetail(data,$index)" ng-repeat="data in DetailOwnerDataArray track by $index">
+                        <div class = "row ">
+                                <div class = "col col-60 text_nameowner fontsize_default item-text-wrap">{{data.emp_name}} {{data.emp_lastname}}</div>
+                                <div class = "col col-33 text_dateowner fontsize_default">{{data.invent_own_start}}</div>
+                        </div>
+                        <div class = "row ">
+                                <div class = "col col-60 text_idowner item-text-wrap">{{data.emp_id_real}}</div>
+
+                        </div>
+                        <i class="icon ion-chevron-right"></i>
+                </div>
+
+        </div>
+
+</ion-view>

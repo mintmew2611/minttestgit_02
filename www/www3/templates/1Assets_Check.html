@@ -1,0 +1,177 @@
+<ion-view class="div_assetsC" >
+
+    <ion-nav-bar class="color_greentitle" align-title="center">
+        <ion-nav-title >
+            ASSETS MANAGEMENT
+        </ion-nav-title>
+
+        <ion-nav-buttons side="left">
+            <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+
+        <ion-nav-buttons side="right">
+
+            <img src="img/Menu_icon_CreateA.png" ng-click="btncreate()" ng-disabled="premiss_write_menu2" class="div_icon_addmanaget"></img>
+            <img src="img/Menu_icon_QRC.png" ng-click="btnqrc()" ng-disabled="premiss_write_menu4" class="div_icon_addmanaget"></img>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+    <ion-header-bar class="bar-light bar-subheader" ng-disabled="premiss_write_menu1">
+
+        <div class="item-input-wrapper item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" ng-model="viewModel.search" placeholder="ค้นหา" ng-change="Search(viewModel.search)">
+            <button ng-show="viewModel.search.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()"></button>
+        </div>
+
+        <div class = "row" ng-click="openPopover($event)">
+            <div class = "col">Filter</div>
+            <i class="icon ion-filter"></i>
+        </div>
+
+
+
+    </ion-header-bar>
+
+
+    <ion-content class="has-header" ng-disabled="premiss_write_menu1">
+
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="doRefresh_list()">
+        </ion-refresher>
+
+        <div class="list list_Inventory" >
+            <div class="item item-icon-right" ng-click="changePage_AssetsDe(data)" ng-repeat="data in InventoryDataArray">
+
+                <table class="row" style="padding-right: 15px;">
+                  <tr>
+                    <td rowspan="3" style="width: 90px;">
+                        <div class="thumbnail thumbnail_listAss">
+                        <img ng-src="{{data.invent_img_url}}" class="setori_img_listass" on-error-src="img/error_img.png" alt="Image">
+                        </div>
+                    </td>
+                    <td colspan="2"><div class = "col name item-text-wrap" ng-bind-html="data.invent_comp_name"></div></td>
+                  <tr>
+                    <td><div class = "col col-40 ">Assets No.</div></td>
+                    <td><div class = "col detail item-text-wrap" ng-bind-html="data.invent_asset_no"></div></td>
+                  </tr>
+                  <tr>
+                    <td><div class = "col col-40">Serial No.</div></td>
+                    <td><div class = "col detail item-text-wrap" ng-bind-html="data.invent_serial_no"></div></td>
+                  </tr></td>
+                  </tr>
+                </table>
+
+                <i class="icon ion-chevron-right"></i>
+            </div>
+        </div>
+
+
+        <ion-infinite-scroll
+                ng-if="!noMoreItemsAvailable"
+                on-infinite="loadMore()"
+                distance="2%">
+        </ion-infinite-scroll>
+
+
+    </ion-content>
+
+
+</ion-view>
+
+
+
+<script id="templates/filter_ass_main.html" type="text/ng-template">
+  <ion-popover-view class="fit">
+
+
+	<ion-nav-bar class="color_greentitle" align-title="center">
+        <ion-nav-title>
+            {{text_title_filter_ass}}
+        </ion-nav-title>
+
+        <ion-nav-buttons side="left">
+            <i class="ion-chevron-left icon_filter" ng-if="btnback_filter" ng-click="back_filter()"></i>
+        </ion-nav-buttons>
+
+		<ion-nav-buttons side="right">
+            <div ng-if="!btnback_filter" class="fontsize_default btn_donr_ass" ng-click="done_filter()">Done</div>
+			<div ng-if="btnback_filter" class="fontsize_default btn_donr_ass" ng-click="Clear_filter()">Clear</div>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+	<ion-content scroll="true">
+
+	     <div class="list list_Inventory filter_ass ass_menu1" >
+            <div class="item item-icon-right" ng-click="filter_sub_Ass(data,$index)" ng-repeat="data in DataArrayFilter track by $index">
+                <table class="row">
+                  <tr>
+                    <td><div class="col item-text-wrap">{{data.name}}</div></td>
+                  </tr>
+				  <tr>
+                    <td class="col item-text-wrap"><div class="namesub_filter{{$index}}"></div></td>
+                  </tr>
+                </table>
+                <i class="icon ion-chevron-right"></i>
+            </div>
+        </div>
+		<div class="list list_Inventory filter_ass ass_menu2" >
+			<div class="item item-icon-right" ng-repeat="data in Add_catDataArray">
+				<li class="item item-checkbox">
+					<label class="checkbox">
+             			<input type="checkbox" id="check_cat{{data.cat_id}}" >
+				   </label><div class="textcheckbox fontsize_default color_green item-text-wrap">{{data.cat_name}}</div>
+				</li>
+            </div>
+        </div>
+		<div class="list list_Inventory filter_ass ass_menu3" >
+			<div class="item item-icon-right" ng-repeat="data in Add_brandDataArray">
+				<li class="item item-checkbox">
+					<label class="checkbox">
+             			<input type="checkbox" id="check_bran{{data.brand_id}}">
+				   </label><div class="textcheckbox fontsize_default color_green item-text-wrap">{{data.brand_name}}</div>
+				</li>
+            </div>
+        </div>
+		<div class="list list_Inventory filter_ass ass_menu4" >
+			<div class="item item-icon-right" ng-repeat="data in buildDataArray">
+				<li class="item item-checkbox">
+					<label class="checkbox">
+             			<input type="checkbox" id="check_build{{data.building_id}}">
+				   </label><div class="textcheckbox fontsize_default color_green item-text-wrap">{{data.building_name}}</div>
+				</li>
+            </div>
+        </div>
+		<div class="list list_Inventory filter_ass ass_menu5" >
+			<div class="item item-icon-right" ng-repeat="data in floorDataArray">
+				<li class="item item-checkbox">
+					<label class="checkbox">
+             			<input type="checkbox" id="check_floor{{data.floor_id}}">
+				   </label><div class="textcheckbox fontsize_default color_green item-text-wrap">{{data.floor_name}}</div>
+				</li>
+            </div>
+        </div>
+		<div class="list list_Inventory filter_ass ass_menu6" >
+			<div class="item item-icon-right" ng-repeat="data in departDataArray">
+				<li class="item item-checkbox">
+					<label class="checkbox">
+             			<input type="checkbox" id="check_depart{{data.department_id}}">
+				   </label><div class="textcheckbox fontsize_default color_green item-text-wrap">{{data.department_name}}</div>
+				</li>
+            </div>
+        </div>
+		<div class="list list_Inventory filter_ass ass_menu7" >
+			<div class="item item-icon-right" ng-repeat="data in HospitalDataArray">
+				<li class="item item-checkbox">
+					<label class="checkbox">
+             			<input type="checkbox" id="check_hospital{{data.hospital_id}}">
+				   </label><div class="textcheckbox fontsize_default color_green item-text-wrap">{{data.hospital_name}}</div>
+				</li>
+            </div>
+        </div>
+	</ion-content>
+  </ion-popover-view>
+</script>

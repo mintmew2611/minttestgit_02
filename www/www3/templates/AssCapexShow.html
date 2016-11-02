@@ -1,0 +1,33 @@
+<ion-view class="div_showmap">
+
+    <ion-nav-bar class="color_greentitle" align-title="center">
+        <ion-nav-title >
+            Capex #{{namecapex}}
+        </ion-nav-title>
+
+        <ion-nav-buttons side="left" >
+            <Button class="button icon-left ion-chevron-left button-clear button-light btnback" ng-click="Back_6()"></Button>
+        </ion-nav-buttons>
+        
+        <ion-nav-buttons side="right" >
+            <Button class="button icon-left ion-archive button-clear button-light btnback" ng-click="btndownload()"></Button>
+        </ion-nav-buttons>
+        
+        
+
+    </ion-nav-bar>
+
+
+        <ion-content>
+
+            <ion-list>
+            	<iframe src="{{text_pdf_capex | trustAsResourceUrl}}" style="display:none;" class="iframe_help"/>
+				<div class="loading" style="width:0;height:0; background-color:#333"></div>
+            </ion-list>
+            
+            
+
+        </ion-content>
+
+
+</ion-view>

@@ -1,0 +1,65 @@
+<ion-view class="div_add_map">
+
+    <ion-nav-bar class="color_greentitle" align-title="center">
+        <ion-nav-title >
+            {{title_check_map}}
+        </ion-nav-title>
+
+
+        <ion-nav-buttons side="left" >
+            <Button class="button icon-left ion-chevron-left button-clear button-light btnback" ng-click="Back_3()"></Button>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+
+    <ion-content class="has-header">
+
+
+
+        <div class="list list-inset listadd_map padding">
+
+            <label class="item item4 item-input" >
+                <div class="number_radius">1</div>
+                <span class="input-label headtitle fontsize_default"> กรอกข้อมูลตำแหน่งทรัพย์สิน</span>
+            </label>
+
+            <span class="input-label fontsize_default">อาคาร</span>
+            <label class="item item-input item-select">
+                <div class="input-label"></div>
+                <select ng-model="Ass_Select1" ng-change="Ass_showSelect1(Ass_Select1)">
+                    <option class="selete_editmap" ng-repeat="data in EditBuildDataArray" value="{{data.building_id}}">{{data.building_name}}</option>
+                </select>
+            </label>
+            <span class="input-label fontsize_default">ชั้น</span>
+            <label class="item item-input item-select">
+                <div class="input-label"></div>
+                <select ng-model="Ass_Select2" ng-change="Ass_showSelect2(Ass_Select2)">
+                    <option class="selete_editmap" ng-repeat="data in EditfloorDataArray" value="{{data.floor_id}}">{{data.floor_name}}</option>
+                </select>
+            </label>
+            <span class="input-label fontsize_default">แผนก</span>
+            <label class="item item-input item-select">
+                <div class="input-label"></div>
+                <select  ng-model="Ass_Select3" ng-change="Ass_showSelect3(Ass_Select3)" id="myselection">
+                    <option class="selete_editmap"  ng-repeat="data in EditDepartDataArray" value="{{data.department_id}}">{{data.department_name}}</option>
+                </select>
+            </label>
+            
+        </div>
+
+
+
+
+
+    </ion-content>
+
+    <div class="padding bar bar-footer">
+
+        <button ng-if="btn_check_map"  class="button button-block btncre_ass" ng-click="add_fin()" >FINISH</button>
+        <button ng-if="!btn_check_map" class="button button-block btncre_ass" ng-click="save_fin()" >บันทึก</button>
+    </div>
+
+
+
+</ion-view>

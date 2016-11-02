@@ -1,0 +1,67 @@
+<ion-view class="div_info_img " align-title="center">
+
+    <ion-nav-bar class="color_greentitle" align-title="center">
+        <ion-nav-title >
+            ASSETS LOCATION
+        </ion-nav-title>
+
+
+        <ion-nav-buttons side="left" >
+            <Button class="button icon-left ion-chevron-left button-clear button-light btnback" ng-click="Back_5()"></Button>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+    <button ng-disabled="premiss_write_ass3" class="button icon-left ion-camera button-block btn_assinfo_img has-header" ng-click="AddImage()" >ADD ASSETS LOCATION PHOTO</button>
+
+    <ion-content class="has-header classios_imgall">
+
+
+        <div class="row gridimg1" ng-repeat="image in images_all_ass" ng-if="$index % 3 === 0 && windowWidth <= 600">
+            <div class="col col-33" ng-if="$index < images_all_ass.length">
+            	<div class="thumbnail thumbnail_assall">
+                   <img ng-src="{{images_all_ass[$index]}}" class="setori_img_assall" on-error-src="img/error_img.png" alt="Image"  ng-click="showImages($index)"/>
+                </div>
+            </div>
+            <div class="col col-33" ng-if="$index + 1 < images_all_ass.length">
+                <div class="thumbnail thumbnail_assall">
+                   <img ng-src="{{images_all_ass[$index + 1]}}" class="setori_img_assall" on-error-src="img/error_img.png" alt="Image"  ng-click="showImages($index+1)"/>
+                </div>
+            </div>
+            <div class="col col-33" ng-if="$index + 2 < images_all_ass.length">
+                <div class="thumbnail thumbnail_assall">
+                   <img ng-src="{{images_all_ass[$index + 2]}}" class="setori_img_assall" on-error-src="img/error_img.png" alt="Image"  ng-click="showImages($index+2)"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row gridimg2" ng-repeat="image in images_all_ass" ng-if="$index % 4 === 0 && windowWidth >= 600">
+            <div class="col col-25" ng-if="$index < images_all_ass.length">
+                <div class="thumbnail thumbnail_assall_big">
+                   <img ng-src="{{images_all_ass[$index]}}" class="setori_img_assall" on-error-src="img/error_img.png" alt="Image"  ng-click="showImages($index)"/>
+                </div>
+            </div>
+            <div class="col col-25" ng-if="$index + 1 < images_all_ass.length">
+                <div class="thumbnail thumbnail_assall_big">
+                   <img ng-src="{{images_all_ass[$index + 1]}}" class="setori_img_assall" on-error-src="img/error_img.png" alt="Image"  ng-click="showImages($index+1)"/>
+                </div>
+            </div>
+            <div class="col col-25" ng-if="$index + 2 < images_all_ass.length">
+                <div class="thumbnail thumbnail_assall_big">
+                   <img ng-src="{{images_all_ass[$index + 2]}}" class="setori_img_assall" on-error-src="img/error_img.png" alt="Image"  ng-click="showImages($index+2)"/>
+                </div>
+            </div>
+            <div class="col col-25" ng-if="$index + 3 < images_all_ass.length">
+                <div class="thumbnail thumbnail_assall_big">
+                   <img ng-src="{{images_all_ass[$index + 3]}}" class="setori_img_assall" on-error-src="img/error_img.png" alt="Image"  ng-click="showImages($index+3)"/>
+                </div>
+            </div>
+        </div>
+        
+         
+
+    </ion-content>
+
+
+
+</ion-view>

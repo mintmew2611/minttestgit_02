@@ -1,0 +1,52 @@
+<ion-view title="MAP" class="Detail_Assets_MAP">
+
+        <div class="list list_map" >
+                <div class="item rowadd_map" ng-click="next_edit_map()" ng-disabled="premiss_write_ass7">
+                        <div class = "row">
+                                <div class = "col col-80"></div>
+                                <div class = "col btnedit fontsize_default" style="text-align: right;"><i class = "ion-edit"></i> EDIT</div>
+                        </div>
+
+                </div>
+
+				<div class="item row_map_detail" ng-if="checkmulti_hos">
+                        <div class="row">
+                                <div class="col col-33">โรงพยาบาล</div>
+                                <div class="col fontsize_default item-text-wrap" >{{name48}}</div>
+                        </div>
+                </div>
+
+                <div class="item row_map_detail">
+                        <div class="row">
+                                <div class="col col-33">อาคาร</div>
+                                <div class="col fontsize_default item-text-wrap" >{{name33}}</div>
+                        </div>
+                </div>
+
+                <div class="item row_map_detail">
+                        <div class="row">
+                                <div class="col col-33">ชั้น</div>
+                                <div class="col fontsize_default item-text-wrap">{{name34}}</div>
+                        </div>
+                </div>
+
+                <div class="item row_map_detail">
+                        <div class="row">
+                                <div class="col col-33">แผนก</div>
+                                <div class="col fontsize_default item-text-wrap">{{name35}}</div>
+                        </div>
+                </div>
+
+                <div class = "row" ng-if="checkbtnshowmap">
+                        <div class = "col">
+                                <button class="button button-block btnAssets_detail icon-left " ng-click="showpagemap()">
+                                         <i class = "ion-seemap"></i>
+                                        ดูแผนที่ตำแหน่งทรัพย์สิน
+                                </button>
+                        </div>
+                </div>
+
+
+        </div>
+
+</ion-view>

@@ -1,0 +1,17 @@
+<div class="modal image-modal transparent" >
+    <font class="number_count_zoom">{{text_count_zoom}}</font>
+	<button class="delete_bin delete_imgzoom" ng-disabled="premiss_write_ass10" ng-click="delete_imgzoom()"></button>
+    <button class="delete_exit pswp__button--close " ng-click="closeModal()"></button>
+  <ion-slide-box on-slide-changed="slideChanged(index)" active-slide="activeSlide">
+    <ion-slide ng-repeat="image in DetailImgDataArray">
+ 
+      <ion-scroll direction="xy" scrollbar-x="false" scrollbar-y="false" overflow-scroll="false"
+      zooming="true" min-zoom="{{zoomMin}}" style="width: 100%; height: 100%"
+      delegate-handle="scrollHandle{{$index}}" on-scroll="updateSlideStatus(activeSlide)" on-release="updateSlideStatus(activeSlide)">
+ 
+      <div class="image" style="background-image: url( {{image}} )"></div>
+      
+    </ion-scroll>
+  </ion-slide>
+</ion-slide-box>
+</div>

@@ -1,0 +1,25 @@
+<ion-view title="REPAIR" class="Detail_Assets_REPAIR">
+
+        <div class="list list_repair" >
+                <div class="item item-icon-right" ng-repeat="data in DetailRepairDataArray">
+                        <div class = "row">
+                                <div class = "col text_prob fontsize_default item-text-wrap">{{data.repair_ploblem}}</div>
+                                <div class = "col text_sendto fontsize_default item-text-wrap">{{data.repair_sentto}}</div>
+                        </div>
+                        <div class = "row ">
+                                <div class = "col col-25 text_date" >
+                                        <button class = "button button-light ion-calendar"> {{data.repair_date}}</button>
+                                </div>
+                                <div class = "col col-25 text_time  ">
+                                        <button class = "button button-light ion-clock"> {{data.repair_time}}</button>
+
+                                </div>
+                                <div class = "col text_by item-text-wrap">โดย {{data.emp_name}} {{data.emp_lastname}}</div>
+                        </div>
+
+                        <i class="icon ion-chevron-right"></i>
+                </div>
+
+        </div>
+
+</ion-view>

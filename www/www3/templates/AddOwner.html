@@ -1,0 +1,178 @@
+<ion-view class="div_add_owner">
+
+    <ion-nav-bar class="color_greentitle" align-title="center">
+        <ion-nav-title >
+            ADD OWNER
+        </ion-nav-title>
+
+
+        <ion-nav-buttons side="left" >
+            <Button class="button icon-left ion-chevron-left button-clear button-light btnback" ng-click="Back_2()"></Button>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+    <ion-header-bar class="bar-light bar-subheader">
+
+        <div class="item-input-wrapper item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" ng-model="viewModel.search" placeholder="ค้นหา" ng-change="Search(viewModel.search)">
+            <button ng-show="viewModel.search.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()"></button>
+        </div>
+
+        <div class = "row" ng-click="openPopover($event)">
+            <div class = "col">Filter</div>
+            <i class="icon ion-filter"></i>
+        </div>
+
+    </ion-header-bar>
+
+    <ion-content class="has-header">
+
+
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="doRefresh()">
+        </ion-refresher>
+
+        <div class="list list_owner" >
+            <div class="item   item-icon-right" ng-click="Add_owner_click(data)" ng-repeat="data in OwnerDataArray">
+
+                <table class="row">
+                  <tr>
+                    <td rowspan="5" style="width: 90px;">
+                        <div class="thumbnail thumbnail_listowner">
+                        <img ng-src="{{data.emp_picture}}" class="setori_img_listowner" on-error-src="img/error_img.png" alt="Image">
+                        </div>
+                    </td>
+                  <tr>
+                    <td><div class = "col col-33">EMP ID :</div></td>
+                    <td><div class = "col detail">{{data.emp_id_real}}</div></td>
+                  </tr>
+                    <td colspan="2"><div class = "col name">{{data.emp_name}} {{data.emp_lastname}}</div></td>
+                  <tr>
+                    <td><div class = "col col-33">ตำแหน่ง</div></td>
+                    <td><div class = "col detail">{{data.position_name}}</div></td>
+                  </tr>
+                  <tr>
+                    <td><div class = "col col-33">แผนก</div></td>
+                    <td><div class = "col detail">{{data.department_name}}</div></td>
+                  </tr></td>
+                  </tr>
+                </table>
+
+                <i class="icon ion-chevron-right" ></i>
+            </div>
+        </div>
+
+
+        <ion-infinite-scroll
+                ng-if="!noMoreItemsAvailable"
+                on-infinite="loadMore()"
+                distance="2%">
+        </ion-infinite-scroll>
+
+
+    </ion-content>
+
+
+</ion-view>
+
+
+<script id="templates/filter_owner_main.html" type="text/ng-template">
+  <ion-popover-view class="fit">
+
+
+	<ion-nav-bar class="color_greentitle" align-title="center">
+        <ion-nav-title>
+            Filter
+        </ion-nav-title>
+
+        <ion-nav-buttons side="left">
+            <i class="ion-chevron-left icon_filter" ng-if="btnback_filter" ng-click="back_filter()"></i>
+        </ion-nav-buttons>
+
+		<ion-nav-buttons side="right">
+            <div ng-if="!btnback_filter" class="fontsize_default btn_donr_ass" ng-click="done_filter()">Done</div>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+    <ion-content scroll="true">
+
+      <div class="list list_Inventory filter_ass" >
+        <div class="item item-icon-right">
+          <label class="item item-radio">
+    			  <input type="radio" name="group2" value="python2" id="check_sort1">
+    			  <div class="radio-content">
+    				<div class="item-content">
+    				  <div class="textcheckbox fontsize_default color_green item-text-wrap">เรียงลำดับชื่อจาก ก- ฮ</div>
+    				</div>
+    				<i class="radio-icon ion-checkmark"></i>
+    			  </div>
+    			</label>
+          <label class="item item-radio">
+    			  <input type="radio" name="group2" value="python2" id="check_sort2">
+    			  <div class="radio-content">
+    				<div class="item-content">
+    				  <div class="textcheckbox fontsize_default color_green item-text-wrap">เรียงลำดับชื่อจาก ฮ - ก</div>
+    				</div>
+    				<i class="radio-icon ion-checkmark"></i>
+    			  </div>
+    			</label>
+          <label class="item item-radio">
+    			  <input type="radio" name="group2" value="python2" id="check_sort3">
+    			  <div class="radio-content">
+    				<div class="item-content">
+    				  <div class="textcheckbox fontsize_default color_green item-text-wrap">เรียงลำดับรหัสจากน้อยไปหามาก</div>
+    				</div>
+    				<i class="radio-icon ion-checkmark"></i>
+    			  </div>
+    			</label>
+          <label class="item item-radio">
+    			  <input type="radio" name="group2" value="python2" id="check_sort4">
+    			  <div class="radio-content">
+    				<div class="item-content">
+    				  <div class="textcheckbox fontsize_default color_green item-text-wrap">เรียงลำดับรหัสจากมากไปหาน้อย</div>
+    				</div>
+    				<i class="radio-icon ion-checkmark"></i>
+    			  </div>
+    			</label>
+        </div>
+        <!--
+        <div class="item item-icon-right" ng-click="filter_sub_Ass(data,$index)" ng-repeat="data in DataArrayFilter track by $index">
+          <table class="row">
+            <tr>
+              <td><div class = "col ">{{data.name}}</div></td>
+            </tr>
+            <tr>
+              <td class="col"><div class="namesub_filter_owner{{$index}}"></div></td>
+            </tr>
+          </table>
+          <i class="icon ion-chevron-right"></i>
+        </div>
+        -->
+      </div>
+
+      <div class="list list_Inventory filter_ass owner_menu2" >
+        <div class="item item-icon-right" ng-repeat="data in PositionDataArray">
+          <li class="item item-checkbox">
+            <label class="checkbox">
+              <input type="checkbox" id="check_position{{data.position_id}}" >
+            </label><div class="textcheckbox fontsize_default color_green">{{data.position_name}}</div>
+          </li>
+        </div>
+      </div>
+      <div class="list list_Inventory filter_ass owner_menu3" >
+        <div class="item item-icon-right" ng-repeat="data in Depart_empDataArray">
+          <li class="item item-checkbox">
+            <label class="checkbox">
+              <input type="checkbox" id="check_departs{{data.emp_depart_id}}">
+            </label><div class="textcheckbox fontsize_default color_green">{{data.emp_depart_name}}</div>
+          </li>
+        </div>
+      </div>
+
+    </ion-content>
+  </ion-popover-view>
+</script>

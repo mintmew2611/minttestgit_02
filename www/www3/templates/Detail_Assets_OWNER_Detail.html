@@ -1,0 +1,75 @@
+<ion-view title="OWNER" class="Detail_Assets_OWNER_Detail">
+
+        <div class="list listownerDetail" >
+            <a class="tab-item fontsize_default boeder_back_ownerdetail" style="padding: 0" ng-click="clicktab3()" ng-class="class_tab3" ui-sref="tabs.Detail_Assets.Detail_Assets_OWNER">
+            <div class="item rowadd_owner" ng-click="back_listowner()" >
+                <div class = "row">
+                    <div class = "col btnadd fontsize_default"><i class = "ion-chevron-left"></i></div>
+                    <div class = "col col-80"></div>
+                </div>
+            </div>
+            </a>
+        </div>
+
+        <div class="list" ng-click="AddImage_owner()">
+        	<div class="thumbnail thumbnail_owner">
+                        <img  class="center_img setori_img_owner" id="img_owner" ng-src="{{img_ownerdetail}}" on-error-src="img/error_img.png" alt="Image">
+            </div>
+            <i class = "ion-camera takephoto_ownerdetail" hidden="true"></i>
+        </div>
+        <div class="row">
+            <div class="col fontsize_default text_center color_green textname_ownerdetail">{{name_ownerdetail}}</div>
+        </div>
+        <div class="row">
+            <div class="col fontsize_default text_center">EMP ID : {{id_ownerdetail}}</div>
+        </div>
+
+        <div class="row ownerdetail_bg">
+            <div class="col col-50 col-center fontsize_default color_green text_center">ตำแหน่ง</div>
+            <div class="col col-50 col-center fontsize_default color_green text_center">แผนก</div>
+        </div>
+        <div class="row ownerdetail_bg">
+            <div class="col col-50 col-center fontsize_default text_center item-text-wrap">{{position_ownerdetail}}</div>
+            <div class="col col-50 col-center fontsize_default text_center item-text-wrap">{{depart_ownerdetail}}</div>
+        </div>
+
+		<div class="row " style="margin-top: 0px;">
+            <div class="col  fontsize_default color_green text_center item-text-wrap">Add by <font color="#000">{{nameaddby}}</font></div>
+        </div>
+        
+        <div class="div_ownerdatestart">
+            <div class="row" style="margin-top: 5px;">
+                <div class="col fontsize_default text_center color_green textname_ownerdetail">วันที่เริ่มถือครองทรัพย์สิน</div>
+            </div>
+            <div class="row">
+                <div class="col fontsize_default text_center textcenter_button date_se1">{{date_ownerdetail}}
+                <div ng-if="checkedit_dateass" ><button ng-disabled="premiss_write_ass5" class="button button-block btn_newedit_owner btnAssets_detail btnedit_dateass icon-left ion-edit" ng-click="showDatepicker1()" ></button></div>
+                </div>
+            </div>
+            <div ng-if="checkedit_dateass"><onezone-datepicker datepicker-object="onezoneDatepicker1"></onezone-datepicker></div>
+            <div class="dateselete_edit1_get hide">{{onezoneDatepicker1.date | date:'dd/MM/yyyy'}}</div>
+            <div class="dateselete_edit1_sent hide">{{onezoneDatepicker1.date | date:'yyyy-MM-dd'}}</div>
+        </div>
+        
+        <div class="div_ownerdatestop">
+            <div class="row" style="margin-top: 5px;" >
+                <div class="col fontsize_default text_center color_green textname_ownerdetail">วันที่สิ้นสุดถือครองทรัพย์สิน</div>
+            </div>
+            <div class="row" >
+                <div class="col fontsize_default text_center textcenter_button date_se2">{{date_st_ownerdetail}}
+                <div ng-if="checkedit_dateass" ><button ng-disabled="premiss_write_ass6" class="button button-block btnAssets_detail btn_newedit_owner btnedit_dateass icon-left ion-edit" ng-click="showDatepicker2()" ></button></div>
+                </div>
+            </div>
+            <div ng-if="checkedit_dateass"><onezone-datepicker datepicker-object="onezoneDatepicker2"></onezone-datepicker></div>
+            <div class="dateselete_edit2_get hide">{{onezoneDatepicker2.date | date:'dd/MM/yyyy'}}</div>
+            <div class="dateselete_edit2_sent hide">{{onezoneDatepicker2.date | date:'yyyy-MM-dd'}}</div>
+        </div>
+        <div class = "row" ng-click="btn_openphoto_card()" style="margin-top: 5px;" >
+            <div class = "col">
+                <button class="button button-block btnAssets_detail btnedit_dateass icon-left ion-card2" >รูปบัตรพนักงานผู้ครอบครอง</button>
+            </div>
+        </div>
+
+		<div hide class="testdate2">{{testdate}}</div>
+
+</ion-view>

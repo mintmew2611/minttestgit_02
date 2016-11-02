@@ -1,0 +1,42 @@
+<ion-view class="div_detailAssets">
+
+    <ion-nav-bar class="color_greentitle" align-title="center">
+        <ion-nav-title ng-bind-html="nametitle">
+        </ion-nav-title>
+
+
+
+        <ion-nav-buttons side="left">
+            <Button class="button icon-left ion-chevron-left button-clear button-light btnback" ng-click="Back_1()"></Button>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+    <ion-content>
+
+    <ion-slide-box show-pager="true">
+        <ion-slide ng-repeat="photo in DetailImgDataArray track by $index">
+            <div class = "box box1"  ng-click="clickzoomimg()" ng-if="!premiss_write_ass11">
+                <img ng-src="{{ photo }}"  ng-click="showImages($index)" />
+            </div>
+        </ion-slide>
+    </ion-slide-box>
+
+    <img class="btnadd_img_icon" ng-if="btnaddimage_ass"  ng-disabled="premiss_write_ass1" ng-src="img/Assets_icon_addAss.png" ng-click="AddImage()">
+
+
+
+    <div class="tabs-striped tabs-top tabs-background-stable tabs-color-balanced">
+        <div class="tabs">
+            <a class="tab-item fontsize_default width_tab1" ng-click="clicktab1()" ng-class="class_tab1" ng-disabled="premiss_write_menu7" ui-sref="tabs.Detail_Assets.Detail_Assets_INFO" >INFO</a>
+            <a class="tab-item fontsize_default width_tab2" ng-click="clicktab2()" ng-class="class_tab2" ng-disabled="premiss_write_menu8" ui-sref="tabs.Detail_Assets.Detail_Assets_REPAIR">REPAIR HISTORY</a>
+            <a class="tab-item fontsize_default width_tab3" ng-click="clicktab3()" ng-class="class_tab3" ng-disabled="premiss_write_menu9" ui-sref="tabs.Detail_Assets.Detail_Assets_OWNER">OWNER</a>
+            <a class="tab-item fontsize_default width_tab4" ng-click="clicktab4()" ng-class="class_tab4" ng-disabled="premiss_write_menu10" ui-sref="tabs.Detail_Assets.Detail_Assets_MAP">MAP</a>
+        </div>
+    </div>
+
+
+    <ui-view name="Detail_Assets-page"></ui-view>
+
+    </ion-content>
+</ion-view>

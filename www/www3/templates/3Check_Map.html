@@ -1,0 +1,196 @@
+<ion-view class="div_checkmap">
+
+    <ion-nav-bar class="color_greentitle" align-title="center">
+        <ion-nav-title>
+            Check Map
+        </ion-nav-title>
+
+        <ion-nav-buttons side="left">
+            <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+	<ion-header-bar class="bar-light bar-subheader">
+        <div class="item-input-wrapper item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" ng-model="viewModel.search" placeholder="ค้นหา" ng-change="Search(viewModel.search)">
+            <button ng-show="viewModel.search.length" class="button button-icon ion-android-close input-button" ng-click="clearSearch()"></button>
+        </div>
+
+        <div class = "row" ng-click="openPopover($event)">
+            <div class = "col">Filter</div>
+            <i class="icon ion-filter"></i>
+        </div>
+    </ion-header-bar>
+
+    <ion-header-bar class="bar-subheader" style="margin-top:50px;">
+    	  <div class="row control_map">
+              <div class = "col" style="text-align: right;">
+              <button ng-click="btn_zoommap1(0)" class="button btncre_ass ion-minus-round" ></button>
+              <button ng-click="btn_zoommap1(1)" class="button btncre_ass ion-plus-round" ></button>
+              </div>
+          </div>
+    </ion-header-bar>
+
+    <ion-content class="has-header bg_map classmap_zoom">
+        	<ion-scroll zooming = "false" max-zoom = "3" min-zoom="1" direction = "xy" class="classmap" no-tap-scroll="true">
+                <ion-list>
+                    <div class="demo">
+                        <div id="container" ng-style="{height: iframeHeight + 'px'}" >
+                            <img ng-style="{height: iframeHeight + 'px'}" ng-src="{{ check_map_url }}"  id="image_show3" style=" padding-right:40px;"/>
+
+                            <div ng-style="{{check_map_marker}}"  id="marker{{$index}}"
+                            class="ui-draggable set_img marker_checkmap" ng-repeat="data in arraymarker track by $index" ng-click="marker_AssetsDe(data)"></div>
+
+                        </div>
+                    </div>
+                </ion-list>
+            </ion-scroll>
+    </ion-content>
+
+    <div class="box" id="boxnearshop">
+          <div  id="imgslideupnearshop"></div>
+            <div class="box-inner" >
+
+            <ion-content style="top: 0px;">
+
+
+			<div class="list list_Inventory sub_list_Inventory" >
+            <div class="item item-icon-right" ng-click="changePage_AssetsDe(data)" ng-repeat="data in arraymarker2">
+                    <table class="row" style="padding-right: 15px;">
+                      <tr>
+                        <td rowspan="3" style="width: 90px;">
+                            <div class="thumbnail thumbnail_listAss">
+                            <img ng-src="{{data.invent_img_url}}" class="setori_img_listcheckmap" on-error-src="img/error_img.png" alt="Image">
+                            </div>
+                        </td>
+                        <td colspan="2"><div class = "col name item-text-wrap">{{data.invent_comp_name}}</div></td>
+                      <tr>
+                        <td><div class = "col col-40">Assets No.</div></td>
+                        <td><div class = "col detail item-text-wrap">{{data.invent_serial_no}}</div></td>
+                      </tr>
+                      <tr>
+                        <td><div class = "col col-40">Serial No.</div></td>
+                        <td><div class = "col detail item-text-wrap">{{data.invent_asset_no}}</div></td>
+                      </tr></td>
+                      </tr>
+                    </table>
+                    <i class="icon ion-chevron-right"></i>
+                </div>
+            </div>
+
+        	<ion-infinite-scroll
+                ng-if="!noMoreItemsAvailable"
+                on-infinite="loadMore()"
+                distance="2%">
+       	    </ion-infinite-scroll>
+            </ion-content>
+            </div>  <!-- end div box-inner -->
+        </div>  <!-- end div boxnearshop -->
+
+
+</ion-view>
+
+
+
+<script id="templates/filter_map_main.html" type="text/ng-template">
+  <ion-popover-view class="fit">
+
+
+	<ion-nav-bar class="color_greentitle" align-title="center">
+        <ion-nav-title>
+            {{text_title_filter_map}}
+        </ion-nav-title>
+
+        <ion-nav-buttons side="left">
+            <i class="ion-chevron-left icon_filter" ng-if="btnback_filter" ng-click="back_filter()"></i>
+        </ion-nav-buttons>
+
+		<ion-nav-buttons side="right">
+            <div ng-if="!btnback_filter" class="fontsize_default btn_donr_ass" ng-click="done_filter()">Done</div>
+			<div ng-if="btnback_filter" class="fontsize_default btn_donr_ass" ng-click="Clear_map_filter()">Clear</div>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+	<ion-content scroll="true">
+
+	     <div class="list list_Inventory filter_ass ass_menu1" >
+            <div class="item item-icon-right" ng-click="filter_sub_Ass(data,$index)" ng-repeat="data in DataArrayFilter track by $index">
+                <table class="row">
+                  <tr>
+                    <td><div class = "col item-text-wrap">{{data.name}}</div></td>
+                  </tr>
+				  <tr>
+                    <td class="col item-text-wrap"><div class="namesub_filter_map{{$index}}"></div></td>
+                  </tr>
+                </table>
+                <i class="icon ion-chevron-right"></i>
+            </div>
+        </div>
+		<div class="list list_Inventory filter_ass ass_menu2" >
+			<div class="item item-icon-right" ng-repeat="data in Add_catDataArray">
+				<li class="item item-checkbox">
+					<label class="checkbox">
+             			<input type="checkbox" id="check_cat_map{{data.cat_id}}" >
+				   </label><div class="textcheckbox fontsize_default color_green item-text-wrap">{{data.cat_name}}</div>
+				</li>
+            </div>
+        </div>
+		<div class="list list_Inventory filter_ass ass_menu3" >
+			<div class="item item-icon-right" ng-repeat="data in Add_brandDataArray">
+				<li class="item item-checkbox">
+					<label class="checkbox">
+             			<input type="checkbox" id="check_bran_map{{data.brand_id}}">
+				   </label><div class="textcheckbox fontsize_default color_green item-text-wrap">{{data.brand_name}}</div>
+				</li>
+            </div>
+        </div>
+		<div class="list list_Inventory filter_ass ass_menu4" >
+			<label class="item item-radio" ng-repeat="data in buildDataArray">
+			  <input type="radio" name="group1" value="python1" id="check_build_map{{data.building_id}}">
+			  <div class="radio-content">
+				<div class="item-content">
+				  <div class="textcheckbox fontsize_default color_green item-text-wrap">{{data.building_name}}</div>
+				</div>
+				<i class="radio-icon ion-checkmark"></i>
+			  </div>
+			</label>
+        </div>
+		<div class="list list_Inventory filter_ass ass_menu5" >
+			<label class="item item-radio" ng-repeat="data in floorDataArray">
+			  <input type="radio" name="group2" value="python2" id="check_floor_map{{data.floor_id}}">
+			  <div class="radio-content">
+				<div class="item-content">
+				  <div class="textcheckbox fontsize_default color_green item-text-wrap">{{data.floor_name}}</div>
+				</div>
+				<i class="radio-icon ion-checkmark"></i>
+			  </div>
+			</label>
+        </div>
+		<div class="list list_Inventory filter_ass ass_menu6" >
+			<label class="item item-radio" ng-repeat="data in departDataArray">
+			  <input type="radio" name="group3" value="python3" id="check_depart_map{{data.department_id}}">
+			  <div class="radio-content">
+				<div class="item-content">
+				  <div class="textcheckbox fontsize_default color_green item-text-wrap">{{data.department_name}}</div>
+				</div>
+				<i class="radio-icon ion-checkmark"></i>
+			  </div>
+			</label>
+        </div>
+		<div class="list list_Inventory filter_ass ass_menu7" >
+			<label class="item item-radio" ng-repeat="data in HospitalDataArray">
+			  <input type="radio" name="group4" value="python4" id="check_hospital_map{{data.hospital_id}}">
+			  <div class="radio-content">
+				<div class="item-content">
+				  <div class="textcheckbox fontsize_default color_green item-text-wrap">{{data.hospital_name}}</div>
+				</div>
+				<i class="radio-icon ion-checkmark"></i>
+			  </div>
+			</label>
+        </div>
+	</ion-content>
+  </ion-popover-view>
+</script>

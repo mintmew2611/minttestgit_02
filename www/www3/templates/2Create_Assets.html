@@ -1,0 +1,520 @@
+
+<ion-view class="div_create_assets " >
+
+  <ion-nav-bar class="color_greentitle" align-title="center">
+    <ion-nav-title>
+      {{title_creass}}
+    </ion-nav-title>
+
+    <ion-nav-buttons side="left">
+      <button ng-if="btn_check_addass" class="button button-icon icon ion-chevron-left btnback" ng-click="back_7()"></button>
+      <button ng-if="btn_check_addass_new" class="button button-icon icon ion-chevron-left btnback" ng-click="back_7()"></button>
+      <button ng-if="!btn_check_addass && !btn_check_addass_new" menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+  </ion-nav-bar>
+
+  <ion-content scroll="true" overflow-scroll="true" class="has-header" id="divscoll_add">
+
+    <label class="item item-input " style="border-width: 0; margin-top:2px;">
+      <div class="number_radius" >1</div>
+      <span class="input-label headtitle fontsize_default"> กรอกข้อมูลของทรัพย์สิน</span>
+    </label>
+
+    <div class="list list-inset listadd_assets padding">
+      <div ng-if="premiss_info1">
+      <span class="input-label fontsize_default">Asset Category </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext1" value="{{edittext1}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+     </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info2">
+      <span class="input-label fontsize_default">Category Description </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext2" value="{{edittext2}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info3">
+      <span class="input-label fontsize_default">Asset Account </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext3" value="{{edittext3}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info4">
+      <span class="input-label fontsize_default">Cost Center Description</span>
+      <section id="intro" ng-if="!btn_check_addass || !btn_check_import">
+        <select ng-model="Addbuild_SelectCost" ng-change="Addbuild_showSelectCost(Addbuild_SelectCost)" id="country" class="Ccountry" >
+          <option class="selete_editmap" ng-repeat="data in CostDataArray" value="{{data.costcenter_id}}">{{data.costcenter_description}}</option>
+        </select>
+      </section>
+      <div class="editfontsize_default" ng-if="btn_check_addass && btn_check_import">{{edittext4}}</div>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info5">
+      <span class="input-label fontsize_default">Location </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext5" value="{{edittext5}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info6">
+      <span class="input-label fontsize_default">Tag Number <font ng-if="!btn_check_addass || !btn_check_import" class="color_red sizedokjan">*</font></span>
+      <label class="item item-input" ng-if="!btn_check_addass || !btn_check_import">
+        <input type="text" class="savetext6" value="{{edittext6}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      <div class="editfontsize_default" ng-if="btn_check_addass && btn_check_import" ng-bind-html="edittext6"></div>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info7">
+      <span class="input-label fontsize_default">Asset Number </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext7" value="{{edittext7}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info8">
+      <span class="input-label fontsize_default">Major Category </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext8" value="{{edittext8}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info9">
+      <span class="input-label fontsize_default">Minor Category </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext9" value="{{edittext9}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info10">
+      <span class="input-label fontsize_default">Name Category </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext10" value="{{edittext10}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info11">
+      <span class="input-label fontsize_default">Asset Description </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext11" value="{{edittext11}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info12">
+      <span class="input-label fontsize_default">Units </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext12" value="{{edittext12}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info13">
+      <span class="input-label fontsize_default">Cost </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext13" value="{{edittext13}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info14">
+      <span class="input-label fontsize_default">Depreciation </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext14" value="{{edittext14}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info15">
+      <span class="input-label fontsize_default">Depreciation Reserve </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext15" value="{{edittext15}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info16">
+      <span class="input-label fontsize_default">NBV at Period End </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext16" value="{{edittext16}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info17">
+      <span class="input-label fontsize_default">Life Year.month </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext17" value="{{edittext17}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info18">
+      <span class="input-label fontsize_default">Date of Acquisition </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext18" value="{{edittext18}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info19">
+      <span class="input-label fontsize_default">Asset Cost Acct </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext19" value="{{edittext19}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info20">
+      <span class="input-label fontsize_default">Accum Deprn Acct </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext20" value="{{edittext20}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info21">
+      <span class="input-label fontsize_default">Account Description </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext21" value="{{edittext21}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info22">
+      <span class="input-label fontsize_default">Employee Name </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext22" value="{{edittext22}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info48">
+      <span class="input-label fontsize_default">Employee Number </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext45" value="{{edittext45}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info23">
+      <span class="input-label fontsize_default">Serial Number </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext23" value="{{edittext23}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info24">
+      <span class="input-label fontsize_default">IT Serial No </span>
+      <label class="item item-input" ng-if="!btn_check_addass || !btn_check_import">
+        <input type="text" class="savetext24" value="{{edittext24}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      <div class="editfontsize_default" ng-if="btn_check_addass && btn_check_import" ng-bind-html="edittext24"></div>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info25">
+      <span class="input-label fontsize_default">Category IT </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext25" value="{{edittext25}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info26">
+      <span class="input-label fontsize_default">Sub Category IT <font ng-if="!btn_check_addass || !btn_check_import" class="color_red sizedokjan">*</font></span>
+      <label class="item item-input item-select" ng-if="!btn_check_addass || !btn_check_import">
+        <div class="input-label"></div>
+        <select ng-model="AddAss_Select1" ng-change="Ass_CreaSelect1(AddAss_Select1)" >
+          <option class="selete_editmap" ng-repeat="data in Add_catDataArray" value="{{data.cat_id}}">{{data.cat_name}}</option>
+        </select>
+      </label>
+      <div class="editfontsize_default" ng-if="btn_check_addass && btn_check_import">{{edittext26}}</div>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info27">
+      <span class="input-label fontsize_default">Brand <font ng-if="!btn_check_addass || !btn_check_import" class="color_red sizedokjan">*</font></span>
+      <label class="item item-input item-select" ng-if="!btn_check_addass || !btn_check_import">
+        <div class="input-label"></div>
+        <select ng-model="AddAss_Select2" ng-change="Ass_CreaSelect2(AddAss_Select2)">
+          <option class="selete_editmap" ng-repeat="data in Add_brandDataArray" value="{{data.brand_id}}">{{data.brand_name}}</option>
+        </select>
+      </label>
+      <div class="editfontsize_default" ng-if="btn_check_addass && btn_check_import">{{edittext27}}</div>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info28">
+      <span class="input-label fontsize_default">Model </span>
+      <label class="item item-input" ng-if="!btn_check_addass || !btn_check_import">
+        <input type="text" class="savetext28" value="{{edittext28}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      <div class="editfontsize_default" ng-if="btn_check_addass && btn_check_import" ng-bind-html="edittext28"></div>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info29">
+      <span class="input-label fontsize_default">Specification </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext29" value="{{edittext29}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info30">
+      <span class="input-label fontsize_default">Ethernet Mac</span>
+      <div class="row change_input_add3">
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext30_1" type="text" id="test1" ng-model="addtext1" ng-change="input_change1()" class="change_input_add2 text1" ></label></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext30_2" type="text" id="test2" ng-model="addtext2" ng-change="input_change2()" class="change_input_add2 text2" ></label></div>
+        <div class="col col-3 change_input_add1"><div class="textked">-</div></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext30_3" type="text" id="" ng-model="addtext3"  ng-change="input_change3()" class="change_input_add2 text3" ></label></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext30_4" type="text" id="" ng-model="addtext4"  ng-change="input_change4()" class="change_input_add2 text4" ></label></div>
+        <div class="col col-3 change_input_add1"><div class="textked">-</div></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext30_5" type="text" id="" ng-model="addtext5"  ng-change="input_change5()" class="change_input_add2 text5" ></label></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext30_6" type="text" id="" ng-model="addtext6"  ng-change="input_change6()" class="change_input_add2 text6" ></label></div>
+        <div class="col col-3 change_input_add1"><div class="textked">-</div></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext30_7" type="text" id="" ng-model="addtext7"  ng-change="input_change7()" class="change_input_add2 text7" ></label></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext30_8" type="text" id="" ng-model="addtext8"  ng-change="input_change8()" class="change_input_add2 text8" ></label></div>
+        <div class="col col-3 change_input_add1"><div class="textked">-</div></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext30_9" type="text" id="" ng-model="addtext9"  ng-change="input_change9()" class="change_input_add2 text9" ></label></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext30_10" type="text" id="" ng-model="addtext10"  ng-change="input_change10()" class="change_input_add2 text10" ></label></div>
+        <div class="col col-3 change_input_add1"><div class="textked">-</div></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext30_11" type="text" id="" ng-model="addtext11"  ng-change="input_change11()" class="change_input_add2 text11" ></label></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext30_12" type="text" id="" ng-model="addtext12"  ng-change="input_change12()" class="change_input_add2 text12" ></label></div>
+      </div>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info31">
+      <span class="input-label fontsize_default">Wireless Mac</span>
+      <div class="row change_input_add3">
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext31_1" type="text" id="" ng-model="addtext_1"  ng-change="input_change_1()" class="change_input_add2 text_1" ></label></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext31_2" type="text" id="" ng-model="addtext_2"  ng-change="input_change_2()" class="change_input_add2 text_2" ></label></div>
+        <div class="col col-3 change_input_add1"><div class="textked">-</div></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext31_3" type="text" id="" ng-model="addtext_3"  ng-change="input_change_3()" class="change_input_add2 text_3" ></label></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext31_4" type="text" id="" ng-model="addtext_4"  ng-change="input_change_4()" class="change_input_add2 text_4" ></label></div>
+        <div class="col col-3 change_input_add1"><div class="textked">-</div></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext31_5" type="text" id="" ng-model="addtext_5"  ng-change="input_change_5()" class="change_input_add2 text_5" ></label></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext31_6" type="text" id="" ng-model="addtext_6"  ng-change="input_change_6()" class="change_input_add2 text_6" ></label></div>
+        <div class="col col-3 change_input_add1"><div class="textked">-</div></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext31_7" type="text" id="" ng-model="addtext_7"  ng-change="input_change_7()" class="change_input_add2 text_7" ></label></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext31_8" type="text" id="" ng-model="addtext_8"  ng-change="input_change_8()" class="change_input_add2 text_8" ></label></div>
+        <div class="col col-3 change_input_add1"><div class="textked">-</div></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext31_9" type="text" id="" ng-model="addtext_9"  ng-change="input_change_9()" class="change_input_add2 text_9" ></label></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext31_10" type="text" id="" ng-model="addtext_10"  ng-change="input_change_10()" class="change_input_add2 text_10" ></label></div>
+        <div class="col col-3 change_input_add1"><div class="textked">-</div></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext31_11" type="text" id="" ng-model="addtext_11"  ng-change="input_change_11()" class="change_input_add2 text_11" ></label></div>
+        <div class="col col-7 change_input_add1"><label class="item item-input"><input ng-value="edittext31_12" type="text" id="" ng-model="addtext_12"  ng-change="input_change_12()" class="change_input_add2 text_12" ></label></div>
+      </div>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info32">
+      <span class="input-label fontsize_default">Site </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext32" value="{{edittext32}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info33">
+      <span class="input-label fontsize_default">Building </span>
+      <label class="item item-input item-select">
+        <div class="input-label"></div>
+        <select ng-model="Addbuild_Select1" ng-change="Addbuild_showSelect1(Addbuild_Select1)">
+          <option class="selete_editmap" ng-repeat="data in Add_buildDataArray" value="{{data.building_id}}">{{data.building_name}}</option>
+        </select>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info34">
+      <span class="input-label fontsize_default">Floor </span>
+      <label class="item item-input item-select">
+        <div class="input-label"></div>
+        <select ng-model="Addbuild_Select2" ng-change="Addbuild_showSelect2(Addbuild_Select2)">
+          <option class="selete_editmap" ng-repeat="data in Add_floorDataArray" value="{{data.floor_id}}">{{data.floor_name}}</option>
+        </select>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info35">
+      <span class="input-label fontsize_default">Department</span>
+      <label class="item item-input item-select">
+        <div class="input-label"></div>
+        <select ng-model="Addbuild_Select3" ng-change="Addbuild_showSelect3(Addbuild_Select3)">
+          <option class="selete_editmap" ng-repeat="data in Add_departDataArray" value="{{data.department_id}}">{{data.department_name}}</option>
+        </select>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info36">
+      <span class="input-label fontsize_default">Computer Name</span>
+      <label class="item item-input  ">
+        <input type="text" class="comname savetext33" value="{{edittext33}}" >
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info37">
+      <span class="input-label fontsize_default">Recive Date </span>
+      <label class="item item-input" ng-click="showDatepicker5()">
+        <div class="dateselete dateselete5">{{onezoneDatepicker5.date | date:'dd MMMM yyyy'}}</div>
+        <div class="dateselete5_get hide">{{onezoneDatepicker5.date | date:'yyyy-MM-dd'}}</div>
+        <i class="icon ion-calendar placeholder-icon" style="position: absolute;right: 0px;"></i>
+      </label>
+      <div class="padding"><onezone-datepicker datepicker-object="onezoneDatepicker5"></onezone-datepicker></div>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info38">
+      <span class="input-label fontsize_default" >Date of purchase </span>
+      <label class="item item-input" ng-click="showDatepicker2()" ng-if="!btn_check_addass || !btn_check_import">
+        <div class="dateselete dateselete2">{{onezoneDatepicker2.date | date:'dd MMMM yyyy'}}</div>
+        <div class="dateselete2_get hide">{{onezoneDatepicker2.date | date:'yyyy-MM-dd'}}</div>
+        <i class="icon ion-calendar placeholder-icon" style="position: absolute;right: 0px;"></i>
+      </label>
+      <div class="editfontsize_default" ng-if="btn_check_addass && btn_check_import">{{edittext35}}</div>
+      <div class="padding"><onezone-datepicker datepicker-object="onezoneDatepicker2"></onezone-datepicker></div>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info39">
+      <span class="input-label fontsize_default" >Install Date </span>
+      <label class="item item-input" ng-click="showDatepicker3()">
+        <div class="dateselete dateselete3">{{onezoneDatepicker3.date | date:'dd MMMM yyyy'}}</div>
+        <div class="dateselete3_get hide">{{onezoneDatepicker3.date | date:'yyyy-MM-dd'}}</div>
+        <i class="icon ion-calendar placeholder-icon" style="position: absolute;right: 0px;"></i>
+      </label>
+      <div class="padding"><onezone-datepicker datepicker-object="onezoneDatepicker3"></onezone-datepicker></div>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info40">
+      <span class="input-label fontsize_default" >Warranty Date </span>
+      <label class="item item-input" ng-click="showDatepicker()" ng-if="!btn_check_addass || !btn_check_import">
+        <div class="dateselete dateselete1">{{onezoneDatepicker.date | date:'dd MMMM yyyy'}}</div>
+        <div class="dateselete1_get hide">{{onezoneDatepicker.date | date:'yyyy-MM-dd'}}</div>
+        <i class="icon ion-calendar placeholder-icon" style="position: absolute;right: 0px;"></i>
+      </label>
+      <div class="editfontsize_default" ng-if="btn_check_addass && btn_check_import">{{edittext37}}</div>
+      <div class="padding"><onezone-datepicker datepicker-object="onezoneDatepicker"></onezone-datepicker></div>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info41">
+      <span class="input-label fontsize_default">Warranty Expire </span>
+      <label class="item item-input" ng-click="showDatepicker4()">
+        <div class="dateselete dateselete4">{{onezoneDatepicker4.date | date:'dd MMMM yyyy'}}</div>
+        <div class="dateselete4_get hide">{{onezoneDatepicker4.date | date:'yyyy-MM-dd'}}</div>
+        <i class="icon ion-calendar placeholder-icon" style="position: absolute;right: 0px;"></i>
+      </label>
+      <div class="padding"><onezone-datepicker datepicker-object="onezoneDatepicker4"></onezone-datepicker></div>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info42">
+      <span class="input-label fontsize_default">Vender </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext39" value="{{edittext39}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info43">
+      <span class="input-label fontsize_default">Contact Vender </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext40" value="{{edittext40}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info44">
+      <span class="input-label fontsize_default">Invoice number </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext41" value="{{edittext41}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info45">
+      <span class="input-label fontsize_default">Rent </span>
+      <label class="item item-input ">
+        <input type="text" class="savetext42" value="{{edittext42}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info46">
+      <span class="input-label fontsize_default">Status </span>
+      <label class="item item-input item-select">
+        <div class="input-label"></div>
+        <select ng-model="AssStatus_Select1" ng-change="AssStatus_showSelect1(AssStatus_Select1)">
+          <option class="selete_editmap" ng-repeat="data in Add_statusDataArray" value="{{data.invent_status_id}}">{{data.invent_status_name}}</option>
+        </select>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+      <div ng-if="premiss_info47">
+      <span class="input-label fontsize_default">Remark </span>
+      <label class="item item-input">
+        <input type="text" class="remark savetext44" value="{{edittext44}}">
+        <i class="icon ion-edit placeholder-icon"></i>
+      </label>
+      </div>
+      <!--------------------------------------------------------->
+
+    </div>
+
+
+<label class="item item2 item-input" ng-if="!btn_check_addass">
+  <div class="number_radius">2</div>
+  <span class="input-label headtitle fontsize_default"> เพิ่มรูปตำแหน่งทรัพย์สิน</span>
+</label>
+
+<div class="padding" ng-if="!btn_check_addass">
+
+  <div class="item-list-detail padding">
+    <ion-scroll direction="x" class="scroll-view ionic-scroll overflow-scroll scroll-x">
+      <img ng-src="img/CreAssets_icon_addAss.png"  class="image-list-thumb" ng-click="loadImage()">
+      <div class="thumbnail thumbnail_addass" ng-repeat="image in Add_PhotoDataArray track by $index">
+        <img  ng-src="{{image}}"  on-error-src="img/error_img.png" alt="Image"  class="setori_img_addass"/>
+        <button class="button button-icon ion-android-close input-button btndelete_create_ass" ng-click="btn_clickdelete($index)"></button>
+      </div>
+
+    </ion-scroll>
+  </div>
+</div>
+
+<label class="item item2 item-input" ng-if="!btn_check_addass">
+  <div class="number_radius">3</div>
+  <span class="input-label headtitle fontsize_default"> แนบไฟล์ Capex</span>
+</label>
+
+<div class="padding" ng-if="!btn_check_addass" style="padding-bottom: 0px;">
+
+  <div class="item item3 padding">
+    <button class="button button-block btncre_ass icon ion-plus-round btn_addpdf" ng-click="btn_seletefile()" style="display: initial;"></button>
+    <font class="fontsize_default textnamepdf_show"></font>
+    <button class="button button-icon ion-android-close input-button btndelete_create_ass_pdf" id="checkbtndelete" ng-click="btn_clickdelete_pdf()"></button>
+    <input id="inputFile" hidden type="file" NAME="textnamepdf" accept=".pdf" onchange="angular.element(this).scope().convertToBase64()" />
+  </div>
+</div>
+
+
+<div class="padding" style="background-color:#F0F1F2">
+  <div style="height:10px;"></div>
+  <button ng-if="btn_check_addass" class="button button-block btncre_ass " ng-click="next_edit_owner()">SAVE</button>
+  <button ng-if="!btn_check_addass" class="button button-block btncre_ass " ng-click="next_add_owner(testtext)" ng-disabled="premiss_write_Cre1">SUBMIT</button>
+  <div style="height:10px;"></div>
+</div>
+
+
+</ion-content>
+
+
+</ion-view>

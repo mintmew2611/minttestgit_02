@@ -1,0 +1,23 @@
+<ion-view>
+
+    <ion-nav-bar class="color_greentitle" align-title="center">
+        <ion-nav-title>
+            Help
+        </ion-nav-title>
+
+        <ion-nav-buttons side="left">
+            <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+
+    <ion-content class="has-header">
+        <ion-list>
+            <iframe src="{{text_pdf | trustAsResourceUrl}}" style="display:none;" class="iframe_help"/>
+			<div class="loading" style="width:0;height:0; background-color:#333"></div>
+        </ion-list>
+    </ion-content>
+
+
+</ion-view>

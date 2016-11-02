@@ -1,0 +1,52 @@
+<ion-view class="div_changepass">
+
+    <ion-nav-bar class="color_greentitle" align-title="center">
+        <ion-nav-title>
+            Change Password
+        </ion-nav-title>
+
+        <ion-nav-buttons side="left">
+            <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+
+    <ion-content class="has-header padding">
+        <br>
+        <div class="list" >
+        	<div class="thumbnail thumbnail_owner">
+                        <img  class="center_img setori_img_ownerCP" id="img_ownerCP" ng-src="{{img_ownerCP}}" on-error-src="img/error_img.png" alt="Image">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col fontsize_default text_center color_green textname_ownerdetail">{{name_ownerCP}}</div>
+        </div>
+        <div class="row">
+            <div class="col fontsize_default text_center">EMP ID : {{id_ownerCP}}</div>
+        </div>
+        
+        <br>
+        
+        <div class="list">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label color_green">Change Password</span>
+            <input type="password" placeholder="Password" class="CP_pass">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <input type="password" placeholder="New Password" class="CP_newpass">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label color_green">Confirm New Password</span>
+            <input type="password" placeholder="Confirm Password" class="CP_comnewpass">
+          </label>
+        </div>
+        
+        <button class="button button-block  btn_changePass" ng-click="btnchangpass()" ng-disabled="premiss_write_Change1">
+          Confirm
+        </button>
+        
+    </ion-content>
+
+
+</ion-view>
